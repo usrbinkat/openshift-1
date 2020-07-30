@@ -42,19 +42,19 @@
 # loop: "{{ manifests.files }}"
 
 ####### Remove Ingress Controller
-- name: '{{ ansible_name_module }} | Remove | Remove Ingress Controller'
-  file:
-    path: "{{ dir_deploy }}/cluster/manifests/manifests/cluster-ingress-default-ingresscontroller.yaml"
-    state: absent
-  when: external_ingress == 'true'
+# name: '{{ ansible_name_module }} | Remove | Remove Ingress Controller'
+# file:
+#   path: "{{ dir_deploy }}/cluster/manifests/manifests/cluster-ingress-default-ingresscontroller.yaml"
+#   state: absent
+# when: external_ingress == 'true'
 
 ####### Remove Publish Internal
-- name: '{{ ansible_name_module }} | Remove | Remove Publish: Internal'
-  lineinfile:
-    path: "{{ dir_deploy }}/cluster/manifests/manifests/cluster-config.yaml"
-    state: absent
-    regexp: '^publish: Internal'
-  when: external_ingress == 'true'
+# name: '{{ ansible_name_module }} | Remove | Remove Publish: Internal'
+# lineinfile:
+#   path: "{{ dir_deploy }}/cluster/manifests/manifests/cluster-config.yaml"
+#   state: absent
+#   regexp: '^publish: Internal'
+# when: external_ingress == 'true'
 
 ####### Rename region across all manifests | Workaround version requires debugging and simplification
 # NOT RELEVANT ON OCP 4.5+
