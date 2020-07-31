@@ -1,4 +1,4 @@
---
+---
 # openshift-install binary to run
 openshift_install_binary: /usr/bin/openshift-install
 
