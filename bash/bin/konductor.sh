@@ -456,7 +456,7 @@ test_core () {
 run () {
 run_core
 test_core
-run_ansible_playbook_bundle_MOCK
+run_ansible_playbook_bundle
 sleep 2
 podman restart nginx
 }
