@@ -1,6 +1,7 @@
 #!/bin/bash
 # Konductor.sh
 #   Authors: kmorgan@redhat.com, kritchie@redhat.com
+#   Author: kmorgan@redhat.com
 # About:
 #   Build and start CloudCtl AirGap OpenShift Deployment Pod from a Koffer Bundle
 ################################################################################
@@ -142,12 +143,11 @@ run_init_usr_prompt () {
       CLUSTER_DOMAIN:     ${k9ClusterDomain}
       CLUSTER_NAME:       ${k9NameCluster}
       BASE_DOMAIN:        ${k9NameDomain}
-      VPC_ID:		  ${k9VpcId}
+      VPC_ID:             ${k9VpcId}
       PRIVATE_VPC_CIDR:   ${k9VpcCidr}
       RHCOS_AMI:          ${k9RhcosAmi}
       SUBNET_LIST:        ${k9SubnetList}
-      
-    "
+"
 
   while true; do
     read -p "    Please confirm these details are correct (Yes/No): " verify
