@@ -311,7 +311,7 @@ EOF
 ################################################################################
 
 write_global_tf_vars () {
-cat <<EOF > /root/global.tfvars
+cat <<EOF > ${k9DirDeploy}/terraform/global.tfvars
 cluster_name="${k9NameCluster}"
 cluster_domain="${k9ClusterDomain}"
 aws_region="${aws_REGION}"
@@ -328,7 +328,7 @@ EOF
 ################################################################################
 
 write_global_tf_vars_post () {
-cat <<EOF > /root/global.tfvars
+cat <<EOF > ${k9DirDeploy}/terraform/global.tfvars
 cluster_name="${cluster_name}"
 cluster_domain="${cluster_domain}"
 aws_region="${aws_region}"
