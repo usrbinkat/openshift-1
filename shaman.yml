@@ -2,6 +2,11 @@
 
 - name: ' Konductor UPI '
   hosts: local
+  vars_files:
+  - '../cluster-vars.yml'
+  - 'vars/{{ target_environment }}.yml'
+  - 'vars/global.yml'
+  - 'vars/git.yml'
   vars:
     module: "build"
     state_provider: "local"
