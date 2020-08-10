@@ -35,7 +35,6 @@
       terraform:
         project_path: "{{ item }}"
         variables_file: "{{ tf_vars }}"
-        force_init: true
         state: present
       loop:
         - "{{ tf_module_path }}/elb"
