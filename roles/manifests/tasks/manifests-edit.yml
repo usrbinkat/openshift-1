@@ -6,14 +6,18 @@
   ignore_errors: True
   no_log: True
 
+####### Run python script to replace string
+- name: '{{ ansible_name_module }} |  | Replace cluster name'
+  script: replace_cluster_name.py {{ cluster_name }} {{ idrand.stdout }} {{ name_cluster_vpc }} {{ dir_deploy }}
+
 ####### replace manifest random id name
-- name: '{{ ansible_name_module }} | replace | s/randId/vpcName/g'
-  replace:
-    path: "{{ dir_deploy }}/cluster/manifests/manifests/cluster-infrastructure-02-config.yml"
-    regexp: "infrastructureName: {{ cluster_name }}-{{ idrand.stdout }}"
-    replace: "infrastructureName: {{ name_cluster_vpc }}"
-  no_log: True
-  ignore_errors: True
+# - name: '{{ ansible_name_module }} | replace | s/randId/vpcName/g'
+#   replace:
+#     path: "{{ dir_deploy }}/cluster/manifests/manifests/cluster-infrastructure-02-config.yml"
+#     regexp: "infrastructureName: {{ cluster_name }}-{{ idrand.stdout }}"
+#     replace: "infrastructureName: {{ name_cluster_vpc }}"
+#   no_log: True
+#   ignore_errors: True
 
 ####### Itemize all manifest files
 - name: '{{ ansible_name_module }} | find |  Find all manifest files'
