@@ -20,21 +20,21 @@
 #   ignore_errors: True
 
 ####### Itemize all manifest files
-- name: '{{ ansible_name_module }} | find |  Find all manifest files'
-  find:
-    path: "{{ dir_deploy }}/cluster/manifests"
-    recurse: yes
-    age: 1s
-  register: manifests
+# - name: '{{ ansible_name_module }} | find |  Find all manifest files'
+#   find:
+#     path: "{{ dir_deploy }}/cluster/manifests"
+#     recurse: yes
+#     age: 1s
+#   register: manifests
 
 ####### Replace infrastructure name across all manifests
-- name: '{{ ansible_name_module }} | replace | Replace infrastructureName for all files'
-  replace:
-    path: "{{ item.path }}"
-    regexp: "{{ cluster_name }}-{{ idrand.stdout }}"
-    replace: "{{ name_cluster_vpc }}"
-  no_log: True
-  loop: "{{ manifests.files }}"
+# - name: '{{ ansible_name_module }} | replace | Replace infrastructureName for all files'
+#   replace:
+#     path: "{{ item.path }}"
+#     regexp: "{{ cluster_name }}-{{ idrand.stdout }}"
+#     replace: "{{ name_cluster_vpc }}"
+#   no_log: True
+#   loop: "{{ manifests.files }}"
 
 ####### Rename region across all manifests
 # name: '{{ ansible_name_module }} | replace | Replace region for all files'
