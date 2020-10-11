@@ -4,10 +4,10 @@ import os
 import sys
 import fileinput
 
-#cluster_name = sys.argv[1]
-#idrand = sys.argv[2]
-#cluster_vpc = sys.argv[3]
-#dir_deploy = sys.argv[4]
+cluster_name = sys.argv[1]
+idrand = sys.argv[2]
+cluster_vpc = sys.argv[3]
+dir_deploy = sys.argv[4]
 
 def recurse_files(dir_deploy):
     file_list = []
@@ -32,4 +32,5 @@ def replace_string(cluster_name, idrand, cluster_vpc, file_list):
         print("Files updated with cluster vpc ID: " + cluster_vpc)
 
 
-replace_string('sparta', 'qsrwn', 'vpc-XXXXX', recurse_files("/root/deploy/cluster/manifests")ff)
+# replace_string('sparta', 'qsrwn', 'vpc-XXXXX', recurse_files("/root/deploy/cluster/manifests"))
+replace_string(cluster_name, idrand, cluster_vpc, recurse_files(dir_deploy))
