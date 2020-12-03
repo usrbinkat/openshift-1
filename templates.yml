@@ -16,17 +16,6 @@
     cloud_key_secret_special: "{{ lookup('ini', 'aws_secret_access_key section=default file={{ dir_secrets }}/aws/credentials') }}"
     redhat_quay_pull_file: '{{ dir_secrets }}/docker/config.json }}'
   tasks:
-
-    - name: '{{ ansible_name_module }} | template | Stage OpenShift Configs & Manifests' 
-      template:
-        src: '{{ item.src }}'
-        dest: '{{ item.dest }}'
-      loop: 
-        - { module: 'templates', src: "{{ dir_platform_templates }}/openshift-install/99_openshift-image-registry_installer-cloud-credentials-secret.yaml.j2", dest: "{{ dir_cluster }}/aux/openshift/99_openshift-image-registry_installer-cloud-credentials-secret.yaml"}
-        - { module: 'templates', src: "{{ dir_platform_templates }}/openshift-install/99_openshift-ingress-operator_cloud-credentials-secret.yaml.j2", dest: "{{ dir_cluster }}/aux/openshift/99_openshift-ingress-operator_cloud-credentials-secret.yaml"}
-        - { module: 'templates', src: "{{ dir_platform_templates }}/openshift-install/99_openshift-machine-api_aws-cloud-credentials-secret.yaml.j2", dest: "{{ dir_cluster }}/aux/openshift/99_openshift-machine-api_aws-cloud-credentials-secret.yaml"}
-        - { module: 'templates', src: "{{ dir_platform_templates }}/openshift-install/aws-creds.yml.j2", dest: "{{ dir_cluster }}/aux/openshift/aws-creds.yml"}
- 
     ####### Ignition User Data
     - name: '{{ ansible_name_module }} role | manifests | template | Stage OpenShift Ignition User-Data JSON'
       template:
