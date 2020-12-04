@@ -5,7 +5,7 @@
 # OpenShift Version
 konductor_version: "{{ lookup('env', 'varVerOpenshift') }}"
 version_openshift: "{{ lookup('env', 'varVerOpenshift') }}"
-tpdk_version: "{{ lookup('env', 'varVerOpenshift') }}"
+tpdk_version: "{{ lookup('env', 'varVerTpdk') }}"
 #konductor_version: latest
 #tpdk_version: master
 
