@@ -1,5 +1,5 @@
 #!/usr/local/bin/ansible-playbook --inventory=inventory.yaml
-- name: '{{ ansible_name }} | bundle | prep' 
+- name: '{{ ansible_name }} | bundle | prep'
   hosts: koffer
   vars_files:
     - '../p1.yml'
@@ -22,7 +22,7 @@
         aws_secret_key: '{{ cloud_key_secret_special }}'
       ignore_errors: True
 
-    - name: '{{ ansible_name_module }} | aws_s3 | Push Bundle to AWS S3 Bucket: {{ name_cluster_vpc }}-{{ cluster_domain }}' 
+    - name: '{{ ansible_name_module }} | aws_s3 | Push Bundle to AWS S3 Bucket: {{ name_cluster_vpc }}-{{ cluster_domain }}'
       aws_s3:
         mode: put
         bucket: '{{ name_cluster_vpc }}-{{ cluster_domain }}'

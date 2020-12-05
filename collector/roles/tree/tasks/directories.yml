@@ -1,5 +1,5 @@
 ---
-- name: '{{ ansible_name_module }} | file | Create Directory Structure' 
+- name: '{{ ansible_name_module }} | file | Create Directory Structure'
   file:
     path: '{{ item }}'
     state: directory
@@ -18,7 +18,7 @@
     - '{{ dir_platform }}/secrets/registry/ssl'
     - '{{ dir_platform }}/secrets/registry/auth'
 
-- name: '{{ ansible_name_module }} | template | Stage CloudCtl Startup Assets' 
+- name: '{{ ansible_name_module }} | template | Stage CloudCtl Startup Assets'
   template:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'

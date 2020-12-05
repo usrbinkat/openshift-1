@@ -1,5 +1,5 @@
 ---
-- name: '{{ ansible_name_module }} | command:skopeo.copy | Pull CloudCTL Pod Images' 
+- name: '{{ ansible_name_module }} | command:skopeo.copy | Pull CloudCTL Pod Images'
   command:
     argv:
       - skopeo
@@ -12,7 +12,7 @@
   with_items:
     - "{{ images_cloudctl }}"
 
-- name: '{{ ansible_name_module }} | command:skopeo.copy | Pull Pause Images' 
+- name: '{{ ansible_name_module }} | command:skopeo.copy | Pull Pause Images'
   command:
     argv:
       - skopeo
