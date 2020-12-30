@@ -1,5 +1,5 @@
 ---
-- name: '{{ ansible_name_module }} | file | Create Directory Structure' 
+- name: '{{ ansible_name_module }} | file | Create Directory Structure'
   file:
     path: '{{ item }}'
     state: directory
@@ -18,10 +18,12 @@
     - '{{ dir_platform }}/mirror'
     - '{{ dir_platform }}/images'
     - '{{ dir_platform }}/nginx'
-- file:
+
+- name: '{{ ansible_name_module }} | file | Create Directory Structure'
+  file:
     path: '{{ item }}'
     state: directory
-    mode: '0644'
+    mode: '0700' # TODO: Check Proper Permissions
   with_items:
     - '{{ dir_platform }}/secrets/registry/ssl'
     - '{{ dir_platform }}/secrets/registry/auth'

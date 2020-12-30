@@ -2,11 +2,14 @@
 - name: '{{ ansible_name_module }} | include_tasks | ignition.yml'
   include_tasks: ignition.yml
 
-- name: '{{ ansible_name_module }} | copy | Move auth directory out of future nginx web root path'
+- name: '{{ ansible_name_module }} | copy | Copy auth directory out of future nginx web root path'
   copy:
     src: "{{ dir_platform }}/cluster/ignition/auth"
     dest: "{{ dir_secrets }}/cluster/"
-- file:
+    mode: '0755'
+
+- name: '{{ ansible_name_module }} | file | Remove auth directory out of future nginx web root path '
+  file:
     path: "{{ dir_platform }}/cluster/ignition/auth"
     state: absent
 
@@ -14,6 +17,7 @@
   copy:
     src: "{{ dir_secrets }}/cluster/auth/kubeconfig"
     dest: '{{ local_home }}/.kube/config'
+    mode: '0600'
 
 - name: '{{ ansible_name_module }} | include_tasks | nginx.yml'
   include_tasks: nginx.yml

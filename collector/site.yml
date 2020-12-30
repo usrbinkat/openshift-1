@@ -1,5 +1,5 @@
 #!/usr/local/bin/ansible-playbook --inventory=inventory.yaml
-- name: ' Koffer | Artifact Rake Utility' 
+- name: ' Koffer | Artifact Rake Utility'
   hosts: koffer
   vars_files:
     - 'vars/global.yml'

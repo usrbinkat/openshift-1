@@ -1,5 +1,5 @@
 #!/usr/local/bin/ansible-playbook --inventory=inventory
-- name: '{{ ansible_name }} | bundle | manifests' 
+- name: '{{ ansible_name }} | bundle | manifests'
   hosts: local
   vars_files:
     - '../cluster-vars.yml'

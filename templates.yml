@@ -1,5 +1,5 @@
 #!/usr/local/bin/ansible-playbook --inventory=inventory
-- name: '{{ ansible_name }} | Konductor | template' 
+- name: '{{ ansible_name }} | Konductor | template'
   hosts: local
   vars_files:
     - '../cluster-vars.yml'
@@ -21,15 +21,17 @@
       template:
         src: "{{ dir_platform_templates }}/user-data/user-data-ign.json.j2"
         dest: "{{ dir_platform }}/config/user-data/{{ item.name }}.json"
+        mode: '0644' # TODO: Figure out the correct permissions
       with_items:
         - { name: master,    IGNITION_URL:  "http://registry.{{ cluster_domain }}/master.ign" }
         - { name: bootstrap, IGNITION_URL:  "http://registry.{{ cluster_domain }}/bootstrap.ign" }
-        - { name: bastion,   USER_AUTH_KEY: "{{ lookup('file', '{{ dir_secrets }}/ssh/id_rsa_kubeadmin.pub')}}" }
+        - { name: bastion,   USER_AUTH_KEY: "{{ lookup('file', '{{ dir_secrets }}/ssh/id_rsa_kubeadmin.pub') }}" }
 
     - name: '{{ ansible_name_module }} role | manifests | template | Stage OpenShift Ignition User-Data B64'
       template:
         src: "{{ dir_platform_templates }}/user-data/user-data-ign.b64.j2"
         dest: "{{ dir_platform }}/config/user-data/{{ item.name }}-json.b64"
+        mode: '0644' # TODO: Figure out the correct permissions
       with_items:
         - { name: 'master',    IGNITION_URL: "http://registry.{{ cluster_domain }}/master.ign" }
         - { name: 'bootstrap', IGNITION_URL: "http://registry.{{ cluster_domain }}/bootstrap.ign" }

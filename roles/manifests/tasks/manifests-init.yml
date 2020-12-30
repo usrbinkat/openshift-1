@@ -4,6 +4,7 @@
   file:
     path: '{{ dir_cluster }}/manifests'
     state: absent
+
 - name: '{{ ansible_name_module }} | init | file:directory | Clean/Purge Old Artifacts'
   file:
     path: '{{ dir_cluster }}/manifests'
@@ -14,7 +15,8 @@
   copy:
     src: '{{ dir_cluster }}/config/install-config.yaml'
     dest: '{{ dir_cluster }}/manifests/install-config.yaml'
+    mode: '0644' # TODO: Figure out the correct permissions
 
 ####### Generate base manifests set
-- name: '{{ ansible_name_module }} | init | shell:openshift-install | create manifests'
-  shell: "{{ openshift_install_binary }} create manifests --dir={{ dir_cluster }}/manifests"
+- name: '{{ ansible_name_module }} | init | command:openshift-install | create manifests'
+  command: "{{ openshift_install_binary }} create manifests --dir={{ dir_cluster }}/manifests"
