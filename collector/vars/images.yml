@@ -14,10 +14,6 @@ images_cloudctl:
     name: konductor
     tag: "{{ konductor_version | default( tpdk_version ) }}"
     path: "{{ dir_platform }}/images"
-  - uri: docker.io
-    name: busybox
-    tag: latest
-    path: "{{ dir_platform }}/images"
   - uri: "{{ source_registry | default('quay.io') }}/{{ source_repository | default('cloudctl') }}"
     name: nginx
     tag: latest
