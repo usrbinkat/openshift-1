@@ -10,19 +10,23 @@ images_pause:
     path: "{{ dir_platform }}/images"
 
 images_cloudctl:
-  - uri: "docker.io/cloudctl"
+  - uri: "{{ (source_registry == 'quay.io') | ternary('quay.io', 'docker.io') }}/{{ source_repository | default('cloudctl') }}"
     name: konductor
     tag: "{{ konductor_version | default( tpdk_version ) }}"
     path: "{{ dir_platform }}/images"
-  - uri: "docker.io/library"
-    name: busybox
-    tag: latest
-    path: "{{ dir_platform }}/images"
-  - uri: "docker.io/library"
+  - uri: "{{ (source_registry == 'quay.io') | ternary('quay.io', 'docker.io') }}/{{ source_repository | default('cloudctl') }}"
     name: nginx
     tag: latest
     path: "{{ dir_platform }}/images"
-  - uri: "docker.io/cloudctl"
+  - uri: "{{ (source_registry == 'quay.io') | ternary('quay.io', 'docker.io') }}/{{ source_repository | default('cloudctl') }}"
     name: registry
+    tag: latest
+    path: "{{ dir_platform }}/images"
+  - uri: "{{ (source_registry == 'quay.io') | ternary('quay.io', 'docker.io') }}/{{ source_repository | default('cloudctl') }}"
+    name: coredns
+    tag: latest
+    path: "{{ dir_platform }}/images"
+  - uri: "{{ (source_registry == 'quay.io') | ternary('quay.io', 'docker.io') }}/{{ source_repository | default('cloudctl') }}"
+    name: haproxy
     tag: latest
     path: "{{ dir_platform }}/images"
