@@ -35,8 +35,8 @@ remote_home: "{{ ansible_env.HOME }}"
 
 #Source Registry
 # If quay.io source_repository = cloudctl ; if docker.io source_repository = library
-source_registry: quay.io
-source_repository: cloudctl
+source_registry: 'quay.io'
+source_repository: 'cloudctl'
 
 # Docker Pull Secrets
 registry_quay_auth_file: "{{ dir_secrets }}/docker/quay.json }}"
